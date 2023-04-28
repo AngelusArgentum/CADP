@@ -17,7 +17,7 @@ begin
     MEJOR2:=32767;
     PEOR1:=-1;
     PEOR2:=-1;
-    for autos:= 1 to 5 do begin
+    for autos:= 1 to 100 do begin
         write('Ingrese el nombre del corredor: ');readln(Nombre);
         write('Ingrese su tiempo de finalización: ');readln(Tiempo);
         if (Tiempo<MEJOR1) then begin
