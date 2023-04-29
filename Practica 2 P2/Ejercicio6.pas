@@ -31,7 +31,7 @@ var
     T:string;
 begin
     Total:=0;   CMin1:=0;   CMin2:=0;   Min1:=99999;    Min2:=99999; CanTotal:=0;   Total:=0; PMAX:=0;
-    for prod:=1 to 3 do begin
+    for prod:=1 to 100 do begin
         write('Ingrese precio del producto: ');readln(P);
         write('Ingrese código del producto: ');readln(C);
         write('Ingrese tipo de producto: ');readln(T);
