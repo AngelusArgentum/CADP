@@ -9,13 +9,11 @@ cual debe procesarse.}
 procedure ContarSumarDig(N:integer ; var CantDig,SumaDig:integer);
     begin
         CantDig:=0; SumaDig:=0;
-        while (N DIV 10 <> 0) do begin
+        while (N <> 0) do begin
             CantDig:=CantDig+1;                                         {Suma un digito cada vez que entra en el loop}
             SumaDig:=SumaDig+N MOD 10;                                  {Suma el digito que queda almacenado en el resto, el MOD}
             N:=N DIV 10;
         end;
-        CantDig:=CantDig+1;                                                 {Independientemente del número ingresado, siempre tiene la menos un digito}
-        SumaDig:=SumaDig+N;                         {Suma el ultimo digito}
         writeln('El número ingresado posee ',CantDig,' digitos, y la suma de ellos es igual a ',SumaDig,'.');
     end;
 var
