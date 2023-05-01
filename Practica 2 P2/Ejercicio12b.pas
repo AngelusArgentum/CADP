@@ -22,7 +22,7 @@ const
     valorXton=320;
 type
     zona=1..3;
-Procedure RenEco (var ha,renTotal,Rendimiento:real;var tipo:zona;var localidad:string;valorXton:real);
+Procedure RenEco (var ha,renTotal,Rendimiento:real;var tipo:zona;var localidad:string;valorXton:real;var CamposLeidos:integer);
 begin
     writeln('Ingrese la cantidad de hectáreas sembradas: ');readln(ha);
     writeln('Ingrese la localidad: ');readln(localidad);
@@ -39,28 +39,31 @@ begin
     end;
     if (Rendimiento<>0) then begin
         writeln('El rendimiento económico de la plantación de ',localidad,' es de U$S',Rendimiento:1:2,'.');
-        renTotal:=renTotal+Rendimiento
+        renTotal:=renTotal+Rendimiento;
+        CamposLeidos:=CamposLeidos+1
     end
     else
         writeln('El tipo de zona ingresada era inválida.')
 end;
 
-Function Max (var renMax:real ; var locMax:string ; Rendimiento:real ; localidad:string):string;
+Function Max (var renMax:real ; var locMax:string ; Rendimiento:real ; localidad:string ; tipo:zona):string;
 begin
-    if (Rendimiento>renMax) then begin
-        renMax:=Rendimiento;
-        locMax:=localidad;
-    end;
+    if (tipo=1) OR (tipo=2) OR (tipo=3) then
+        if (Rendimiento>renMax) then begin
+            renMax:=Rendimiento;
+            locMax:=localidad;
+        end;
     Max:=LocMax;
 end;
 
 
-Function Min (var renMin:real; var locMin:string ; Rendimiento:real ; localidad:string):string;
+Function Min (var renMin:real; var locMin:string ; Rendimiento:real ; localidad:string; tipo:zona):string;
 begin
-    if (Rendimiento<renMin) then begin
-        renMin:=Rendimiento;
-        locMin:=localidad;
-    end;
+    if (tipo=1) OR (tipo=2) OR (tipo=3) then
+        if (Rendimiento<renMin) then begin
+            renMin:=Rendimiento;
+            locMin:=localidad;
+        end;
     Min:=LocMin;
 end;
 
@@ -73,12 +76,11 @@ var
 begin
     CamposLeidos:=0; renMin:=99999; renMax:=-1; locMin:='und'; locMax:='und'; renTotal:=0; Rendimiento:=0;
     repeat
-    RenEco (ha,renTotal,Rendimiento,tipo,localidad,valorXton);
-    CamposLeidos:=CamposLeidos+1;
-    Max (renMax,locMax,Rendimiento,localidad);
-    Min (renMin,locMin,Rendimiento,localidad);
+    RenEco (ha, renTotal, Rendimiento, tipo, localidad, valorXton, CamposLeidos);
+    Max (renMax, locMax, Rendimiento, localidad, tipo);
+    Min (renMin, locMin, Rendimiento, localidad, tipo);
     until (ha=900) AND (localidad='Saladillo');
-    writeln('Campo con el rendimiento estimado máximo: ',Max (renMax,locMax,Rendimiento,localidad),'.');
-    writeln('Campo con el rendimiento estimado mínimo: ',Min (renMin,locMin,Rendimiento,localidad),'.');
+    writeln('Campo con el rendimiento estimado máximo: ',Max (renMax, locMax, Rendimiento, localidad, tipo),'.');
+    writeln('Campo con el rendimiento estimado mínimo: ',Min (renMin, locMin, Rendimiento, localidad, tipo),'.');
     writeln('Promedio: ',renTotal/CamposLeidos:1:2);
 end.
