@@ -32,6 +32,7 @@ begin
             write('Ingrese el apellido del alumno: ');readln(apellido);
             write('Ingrese el nombre del alumno: ');readln(nombre);
             write('Ingrese el año de nacimiento del alumno: ');readln(born);
+            writeln('-------------------------');
         end;
     end;
 end;
