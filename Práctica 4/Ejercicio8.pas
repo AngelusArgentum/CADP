@@ -84,12 +84,11 @@ begin
     for i:=1 to DF do begin
         N:=v[i].DNI;
         d:=N MOD 10;
-        while (N>0) AND (d MOD 2 = 0) do begin
+        while (N>0) AND (d MOD 2 = 0) do
             if (d MOD 2 = 0) then begin
                 N:= N DIV 10;
                 d:=N MOD 10
-            end
-        end;
+            end;
         if (N=0) then
             cant:=cant+1;
     end;
