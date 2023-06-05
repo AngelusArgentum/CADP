@@ -1,4 +1,4 @@
-Program Ejercicio11;
+Program Ejercicio1;
 {a. Dado un vector de enteros de a lo sumo 5 valores, realice un módulo que reciba dicho vector y un valor
 n y retorne si n se encuentra en el vector o no.
 
