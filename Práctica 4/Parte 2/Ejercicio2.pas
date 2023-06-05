@@ -47,17 +47,19 @@ end;
 Procedure EliminarNombre (var v:vector; var DL:integer);
 var
     nombre:string;
-    pos:integer;
+    i:integer;
 begin
-    pos:=1;
+    i:=1;
     write('Ingrese el nombre del que quiere eliminar la primera ocurrencia: ');readln(nombre);
-    while (pos<=DL) AND (v[pos] <> nombre) do
-        pos:=pos+1;
-    if (pos<=DL) then begin
-        for pos:=pos to (DL-1) do
-            v[pos]:=v[pos+1];
-        DL:=DL-1;
-    end;
+    while (i<=DL) AND (v[i] <> nombre) do
+        i:=i+1;
+    if (i<=DL) then begin
+        for i:=i to (DL-1) do
+            v[i]:=v[i+1];
+        DL:=DL-1
+    end
+    else
+        writeln('El nombre no se encontraba en el vector.');
 end;
 
 
@@ -74,7 +76,7 @@ begin
         DL:=DL+1
     end
     else
-        writeln('El vector está lleno, por lo que no puede añadirse el nombre ',nombre,'.');
+        writeln('El vector está lleno, por lo que no puede insertarse el nombre ',nombre,'.');
 end;
 
 Procedure Agregar (var v:vector; var DL:integer);
