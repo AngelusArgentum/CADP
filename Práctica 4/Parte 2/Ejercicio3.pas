@@ -106,6 +106,33 @@ begin
 end;
 
 Procedure IncisoC (m:marzo;var DL:integer);
+var
+    i,j:integer;
+begin
+    i:=1;
+    j:=1;
+    while (i<=DL) do begin
+        if m[i].distancia<>100 then begin
+            m[j]:=m[i];
+            j:=j+1
+        end;
+        i:=i+1;
+    end;
+    DL:=j-1;
+end;
+
+Procedure Informar (m:marzo ; DL:integer);
+var
+    i:integer;
+begin
+    for i:=1 to DL do begin
+        writeln('------------------------------------------------------------------');
+        writeln('La distancia recorrida en el viaje ',i,' fue de ',m[i].distancia:0:2,'km.');
+        writeln('El día de inicio del viaje ',i,' fue el ',m[i].dia,'.');
+        writeln('La cantidad de dinero llevada al viaje ',i,' fue de $',m[i].dinero:0:2,'.');
+        writeln('------------------------------------------------------------------');
+    end;
+end;
 
 var
     m:marzo;
@@ -113,4 +140,6 @@ var
 begin
     CargarMarzo (m,DL);
     IncisoB (m,DL);
+    IncisoC (m,DL);
+    Informar (m,DL);
 end.
