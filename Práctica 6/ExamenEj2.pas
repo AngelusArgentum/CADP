@@ -11,6 +11,11 @@ a) realizar un modulo que retorne la informacion de las categorias en una estruc
 La informacion se lee por teclado sin ningun orden. 
 De cada categoria se lee nombre, codigo (1-26) y precio x kilo.}
 
+{b)Realizar un modulo que reciba la informacion de todas las compras, la informacion de las categorías y retorne:
+1- DNI del cliente que mas compras ha realizado.
+2-Monto total recaudado por cada categoria
+3-Cantidad total de compras de clientes con DNI compuesto por al menos 3 digitos pares.}
+
 const
     cant_categorias=26;
 type
@@ -55,10 +60,6 @@ begin
         v[C]:=P;
 end;
 
-{b)Realizar un modulo que reciba la informacion de todas las compras, la informacion de las categorías y retorne:
-1- DNI del cliente que mas compras ha realizado.
-2-Monto total recaudado por cada categoria
-3-Cantidad total de compras de clientes con DNI compuesto por al menos 3 digitos pares.}
 Procedure InicializarVector (var m:montos);
 var
     i:rango_categorias;
