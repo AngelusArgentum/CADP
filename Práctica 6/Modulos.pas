@@ -129,3 +129,45 @@ begin
         v[i]:=item;
     end;
 end;
+
+Procedure EliminarRepDesord (var pri:lista ; n: integer);
+var
+    anterior,actual:lista;
+begin
+    actual:=pri;
+    anterior:=nil;
+    while (actual <> nil) do
+        if (actual^.num <> n) then begin
+            anterior:=actual;
+            actual:=actual^.sig
+        end
+        else begin
+            if (actual=pri) then
+                pri:=actual^.sig
+            else
+                anterior^.sig:=actual^.sig;
+            dispose (actual);
+            actual:=anterior;
+        end;
+end;
+
+
+Procedure EliminarRepAsc (var pri:lista ; n: integer);
+var
+    anterior,actual:lista;
+begin
+    actual:=pri;
+    anterior:=nil;
+    while (actual <> nil) and (actual^.num < n) do begin
+        anterior := actual;
+        actual := actual^.sig;
+    end;
+    while (actual <> nil) and (actual^.num = n) do begin
+        if (actual = pri) then
+            pri := actual^.sig
+        else
+            anterior^.sig := actual^.sig;
+        dispose(actual);
+        actual := anterior^.sig;
+    end;
+end;
