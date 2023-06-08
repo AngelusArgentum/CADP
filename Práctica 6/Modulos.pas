@@ -20,7 +20,7 @@ begin
     dispose (actual);
 end;
 
-Procedure Eliminar (var pri:lista; n: integer); //Lista ordenada de manera ascendente. Para descendente voltear el unico comparador en linea 31.
+Procedure EliminarOrdenadoAsc (var pri:lista; n: integer); //Lista ordenada de manera ascendente. Para descendente voltear el unico comparador en linea 31.
 var
     actual,anterior:lista;
 begin
